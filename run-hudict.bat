@@ -1,3 +1,7 @@
 @echo off
 cd /d "%~dp0"
-".venv\Scripts\hudict.exe"
+if exist "HUDict.exe" (
+  "HUDict.exe"
+) else (
+  ".venv\Scripts\hudict.exe"
+)

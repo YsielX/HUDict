@@ -20,11 +20,22 @@ HUDict is designed for English immersion: watching a film, reading subtitles, pl
 ## Requirements
 
 - Windows 10 or later.
-- Python 3.10 or later.
 - Windows English OCR language support. Most English Windows installations already have it.
-- ECDICT CSV data if you want to build the dictionary locally.
+- Python 3.10 or later if you install from source.
+- ECDICT CSV data if you want to build the dictionary locally or create your own release package.
 
-## Install
+## Download
+
+The easiest way to use HUDict is to download the Windows zip from [GitHub Releases](https://github.com/YsielX/HUDict/releases).
+
+1. Download `HUDict-vX.Y.Z-windows-x64.zip`.
+2. Unzip it to a folder you can write to.
+3. Run `run-hudict.bat` or `HUDict.exe`.
+4. Keep `config.ini` and `dictionary.pkl` in the same folder as `HUDict.exe`.
+
+The release package includes a ready-to-use ECDICT dictionary when it is built with the default release script.
+
+## Install From Source
 
 Create a virtual environment and install HUDict in editable mode:
 
@@ -60,6 +71,25 @@ Default behavior:
 - HUDict captures a small region around the cursor.
 - If OCR and dictionary lookup succeed, a popup appears near the cursor.
 - Release `p` to hide the popup.
+
+## Build A Release
+
+Maintainers can build the Windows release package locally:
+
+```powershell
+.\scripts\build_release.ps1
+```
+
+This creates `dist\HUDict-vX.Y.Z-windows-x64.zip`. The zip contains the app, `config.ini`, `dictionary.pkl`, the launcher, and both README files.
+
+To publish the zip to GitHub Releases, install [GitHub CLI](https://cli.github.com/), sign in, then run:
+
+```powershell
+gh auth login
+.\scripts\publish_release.ps1
+```
+
+If you prefer to upload manually, create a release for tag `vX.Y.Z` on GitHub and attach the zip from `dist/`.
 
 ## Configuration
 
