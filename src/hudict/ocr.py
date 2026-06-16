@@ -38,9 +38,10 @@ class WindowsOcr:
         for raw_line in result.lines:
             words = []
             for raw_word in raw_line.words:
-                text = raw_word.text.strip()
-                if not WORD_RE.fullmatch(text):
+                match = WORD_RE.search(raw_word.text.strip())
+                if not match:
                     continue
+                text = match.group(0)
                 rect = raw_word.bounding_rect
                 words.append(Word(text=text, box=Box(rect.x, rect.y, rect.width, rect.height)))
             if not words:

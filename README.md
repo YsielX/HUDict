@@ -1,19 +1,28 @@
 # HUDict
 
-HUDict is a small Windows popup dictionary for English text on screen.
+HUDict is a Windows popup dictionary for learning English from what you watch and play.
 
-Hold a hotkey over a word, and HUDict captures a small area around the cursor, runs local Windows OCR, picks the nearest English word, and shows a Chinese definition from ECDICT.
+Hold a hotkey over a word, and HUDict captures a small area around the cursor, runs local Windows OCR, picks the nearest English word, and shows a concise Chinese definition from ECDICT.
 
-It is intentionally narrow: no Japanese parsing, no game hooks, no online OCR, no translation API.
+HUDict is designed for English immersion: watching a film, reading subtitles, playing a game, or browsing a page while keeping the original sentence in view. It helps you understand one word at a time, so the surrounding context still does the teaching.
 
 ## Features
 
-- Local Windows OCR, no Google or cloud request.
+- Local Windows OCR for fast, private recognition.
 - English-to-Chinese dictionary lookup powered by ECDICT.
 - Cursor-centered capture instead of full-screen OCR.
 - Nearest-word hit testing for multi-line text.
 - Floating PyQt popup shown while the hotkey is held.
 - Optional debug dump with screenshots, OCR words, hit word, lookup result, and timing.
+
+## Inspiration
+
+HUDict is inspired by tools that make lookup feel immediate instead of interruptive:
+
+- [dominostars/playtranslate](https://github.com/dominostars/playtranslate), especially its tap-to-lookup feeling on Android.
+- [rtr46/meikipop](https://github.com/rtr46/meikipop), especially the idea of an OCR-powered desktop popup dictionary.
+
+HUDict focuses on English-learning workflows on Windows, using local OCR and ECDICT.
 
 ## Requirements
 
@@ -101,7 +110,7 @@ With Windows OCR, OCR is usually only a few milliseconds on ordinary text.
 
 ## Limitations
 
-- HUDict is built for English words. It does not perform sentence translation.
+- HUDict focuses on word lookup for learning in context.
 - OCR quality depends on font, scale, contrast, and overlays.
 - Some fullscreen exclusive games may block screen capture or popup rendering.
 - Online games with anti-cheat may dislike overlays and global hotkeys.
@@ -114,8 +123,6 @@ Useful checks:
 .\.venv\Scripts\hudict.exe --version
 .\.venv\Scripts\python.exe -m hudict.tools.build_ecdict ..\ECDICT\ecdict.csv -o dictionary.pkl
 ```
-
-Git commits in this repository are grouped by feature so changes are easy to review.
 
 ## License Notes
 

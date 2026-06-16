@@ -1,19 +1,28 @@
 # HUDict
 
-HUDict 是一个 Windows 上使用的英文屏幕取词小工具。
+HUDict 是一个面向英语学习的 Windows 屏幕取词工具。
 
-按住热键指向英文单词时，HUDict 会截取鼠标附近的一小块屏幕，使用本地 Windows OCR 识别文字，再选择离鼠标最近的英文单词，并用 ECDICT 显示中文释义。
+按住热键指向英文单词时，HUDict 会截取鼠标附近的一小块屏幕，使用本地 Windows OCR 识别文字，再选择离鼠标最近的英文单词，并用 ECDICT 显示简洁的中文释义。
 
-它的目标很克制：不做日文解析，不 hook 游戏进程，不使用在线 OCR，也不调用翻译 API。
+HUDict 面向沉浸式英语学习：看影视、读字幕、玩游戏或浏览网页时，在保留原句语境的同时快速查一个词。它帮助你理解单词，但仍然让上下文承担主要的学习作用。
 
 ## 功能
 
-- 使用 Windows 本地 OCR，不依赖 Google 或其它云服务。
+- 使用 Windows 本地 OCR，识别速度快，也更适合离线使用。
 - 使用 ECDICT 做英中词典查询。
 - 只截取鼠标附近区域，不做全屏 OCR。
 - 对多行文字使用“最近词”命中逻辑。
 - 按住热键时显示 PyQt 浮窗，松开后隐藏。
 - 可选 debug 输出：截图、OCR 结果、词框、命中词、查词结果和耗时。
+
+## 灵感来源
+
+HUDict 受到这些工具的启发：
+
+- [dominostars/playtranslate](https://github.com/dominostars/playtranslate)：尤其是 Android 上点按取词的使用体验。
+- [rtr46/meikipop](https://github.com/rtr46/meikipop)：尤其是 OCR 驱动的桌面弹窗词典思路。
+
+HUDict 则聚焦 Windows 上的英语学习场景，使用本地 OCR 和 ECDICT。
 
 ## 环境要求
 
@@ -102,7 +111,7 @@ JSON 里的 `timing_ms` 可以用来判断慢在哪一步：
 
 ## 限制
 
-- HUDict 面向英文单词查词，不做整句翻译。
+- HUDict 聚焦在语境中的单词查词。
 - OCR 准确度受字体、缩放、对比度、遮罩和屏幕效果影响。
 - 部分独占全屏游戏可能阻止截图或浮窗显示。
 - 带反作弊的在线游戏可能不喜欢浮窗和全局热键。
@@ -115,8 +124,6 @@ JSON 里的 `timing_ms` 可以用来判断慢在哪一步：
 .\.venv\Scripts\hudict.exe --version
 .\.venv\Scripts\python.exe -m hudict.tools.build_ecdict ..\ECDICT\ecdict.csv -o dictionary.pkl
 ```
-
-这个仓库里的提交已经按功能拆分，方便 review 和 push。
 
 ## 许可证说明
 
