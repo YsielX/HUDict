@@ -72,7 +72,9 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     payload, skipped = build(args.csv_path)
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    output_dir = os.path.dirname(args.output)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     with open(args.output, "wb") as f:
         pickle.dump(payload, f, protocol=pickle.HIGHEST_PROTOCOL)
     refs = sum(len(v) for v in payload["lookup_map"].values())

@@ -1,18 +1,122 @@
 # HUDict
 
-HUDict is a small Windows English-to-Chinese popup dictionary.
+HUDict is a small Windows popup dictionary for English text on screen.
 
-It captures a small region around the mouse, runs local Windows OCR, finds the nearest English word, and shows an ECDICT definition while the hotkey is held.
+Hold a hotkey over a word, and HUDict captures a small area around the cursor, runs local Windows OCR, picks the nearest English word, and shows a Chinese definition from ECDICT.
 
-## Quick start
+It is intentionally narrow: no Japanese parsing, no game hooks, no online OCR, no translation API.
+
+## Features
+
+- Local Windows OCR, no Google or cloud request.
+- English-to-Chinese dictionary lookup powered by ECDICT.
+- Cursor-centered capture instead of full-screen OCR.
+- Nearest-word hit testing for multi-line text.
+- Floating PyQt popup shown while the hotkey is held.
+- Optional debug dump with screenshots, OCR words, hit word, lookup result, and timing.
+
+## Requirements
+
+- Windows 10 or later.
+- Python 3.10 or later.
+- Windows English OCR language support. Most English Windows installations already have it.
+- ECDICT CSV data if you want to build the dictionary locally.
+
+## Install
+
+Create a virtual environment and install HUDict in editable mode:
 
 ```powershell
 python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -e .
-.\.venv\Scripts\python.exe -m hudict.tools.build_ecdict C:\Users\Ysiel\projects\ECDICT\ecdict.csv
+```
+
+## Build The Dictionary
+
+HUDict expects `dictionary.pkl` in the project directory.
+
+If you have ECDICT checked out next to this repository, run:
+
+```powershell
+.\.venv\Scripts\python.exe -m hudict.tools.build_ecdict ..\ECDICT\ecdict.csv -o dictionary.pkl
+```
+
+You only need to rebuild the dictionary when the ECDICT data changes.
+
+## Run
+
+Start HUDict:
+
+```powershell
 .\run-hudict.bat
 ```
 
-Default hotkey: `p`
+Default behavior:
 
-Debug files are written to `%LOCALAPPDATA%\HUDict\debug` when `debug_capture = true`.
+- Hold `p` over an English word.
+- HUDict captures a small region around the cursor.
+- If OCR and dictionary lookup succeed, a popup appears near the cursor.
+- Release `p` to hide the popup.
+
+## Configuration
+
+HUDict reads `config.ini` from the project directory. If it does not exist, HUDict creates it on first import/run.
+
+Useful settings:
+
+```ini
+[Settings]
+hotkey = p
+capture_width = 420
+capture_height = 160
+debug_capture = true
+debug_dir =
+font_family = Microsoft YaHei
+```
+
+Notes:
+
+- `capture_width` and `capture_height` control the cursor-centered OCR region.
+- Smaller capture regions can reduce distractions, but may cut off text.
+- `debug_dir` may be left empty; HUDict will use `debug/` in the project directory.
+- Set `debug_capture = false` after troubleshooting to avoid writing screenshots and JSON files.
+
+## Debug Files
+
+When `debug_capture = true`, each hotkey press writes:
+
+- `debug/<timestamp>.png`: the actual OCR image.
+- `debug/<timestamp>.json`: OCR lines, words, boxes, selected word, dictionary entries, and timing.
+
+The JSON timing section helps diagnose latency:
+
+- `capture`
+- `ocr`
+- `hit_test`
+- `lookup`
+- `total_to_lookup`
+
+With Windows OCR, OCR is usually only a few milliseconds on ordinary text.
+
+## Limitations
+
+- HUDict is built for English words. It does not perform sentence translation.
+- OCR quality depends on font, scale, contrast, and overlays.
+- Some fullscreen exclusive games may block screen capture or popup rendering.
+- Online games with anti-cheat may dislike overlays and global hotkeys.
+
+## Development
+
+Useful checks:
+
+```powershell
+.\.venv\Scripts\hudict.exe --version
+.\.venv\Scripts\python.exe -m hudict.tools.build_ecdict ..\ECDICT\ecdict.csv -o dictionary.pkl
+```
+
+Git commits in this repository are grouped by feature so changes are easy to review.
+
+## License Notes
+
+HUDict code is separate from ECDICT. Check ECDICT's license before redistributing dictionary data.
