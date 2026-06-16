@@ -22,18 +22,30 @@ HUDict is designed for English immersion: watching a film, reading subtitles, pl
 - Windows 10 or later.
 - Windows English OCR language support. Most English Windows installations already have it.
 - Python 3.10 or later if you install from source.
-- ECDICT CSV data if you want to build the dictionary locally or create your own release package.
+- ECDICT CSV data if you want to build the dictionary locally.
 
-## Download
+## Use The Release
 
 The easiest way to use HUDict is to download the Windows zip from [GitHub Releases](https://github.com/YsielX/HUDict/releases).
 
 1. Download `HUDict-vX.Y.Z-windows-x64.zip`.
-2. Unzip it to a folder you can write to.
-3. Run `run-hudict.bat` or `HUDict.exe`.
-4. Keep `config.ini` and `dictionary.pkl` in the same folder as `HUDict.exe`.
+2. Unzip it to any normal folder, such as `Downloads\HUDict` or `Documents\HUDict`.
+3. Run `run-hudict.bat`.
+4. Move your mouse over an English word, then hold `p`.
+5. Release `p` to hide the popup.
 
-The release package includes a ready-to-use ECDICT dictionary when it is built with the default release script.
+Keep these files in the same folder:
+
+- `HUDict.exe`: the app.
+- `run-hudict.bat`: the recommended launcher.
+- `config.ini`: hotkey, capture size, font, color, and debug settings.
+- `dictionary.pkl`: the local English-to-Chinese dictionary.
+
+HUDict does not need Python when you use the release zip.
+
+If Windows blocks the app the first time you run it, choose **More info** and then **Run anyway**. This can happen with unsigned open-source Windows tools.
+
+If holding `p` does nothing, check that Windows English OCR is installed. On Windows, open **Settings > Time & language > Language & region**, add English if needed, and make sure OCR support is available for it.
 
 ## Install From Source
 
@@ -71,25 +83,6 @@ Default behavior:
 - HUDict captures a small region around the cursor.
 - If OCR and dictionary lookup succeed, a popup appears near the cursor.
 - Release `p` to hide the popup.
-
-## Build A Release
-
-Maintainers can build the Windows release package locally:
-
-```powershell
-.\scripts\build_release.ps1
-```
-
-This creates `dist\HUDict-vX.Y.Z-windows-x64.zip`. The zip contains the app, `config.ini`, `dictionary.pkl`, the launcher, and both README files.
-
-To publish the zip to GitHub Releases, install [GitHub CLI](https://cli.github.com/), sign in, then run:
-
-```powershell
-gh auth login
-.\scripts\publish_release.ps1
-```
-
-If you prefer to upload manually, create a release for tag `vX.Y.Z` on GitHub and attach the zip from `dist/`.
 
 ## Configuration
 
