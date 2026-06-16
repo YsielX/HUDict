@@ -1,5 +1,7 @@
 # HUDict
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 HUDict is a Windows popup dictionary for learning English from what you watch and play.
 
 Hold a hotkey over a word, and HUDict captures a small area around the cursor, runs local Windows OCR, picks the nearest English word, and shows a concise Chinese definition from ECDICT.

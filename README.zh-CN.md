@@ -1,5 +1,7 @@
 # HUDict
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 HUDict 是一个面向英语学习的 Windows 屏幕取词工具。
 
 按住热键指向英文单词时，HUDict 会截取鼠标附近的一小块屏幕，使用本地 Windows OCR 识别文字，再选择离鼠标最近的英文单词，并用 ECDICT 显示简洁的中文释义。
