@@ -13,6 +13,7 @@ dependencies = [
     "Pillow>=11.2.1",
     "platformdirs>=4.0.0",
     "keyboard~=0.13.5",
+    "pynput>=1.7.8",
     "winsdk>=1.0.0b10",
 ]
 
