@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hudict"
+version = "0.1.0"
+description = "Local English-to-Chinese OCR popup dictionary"
+requires-python = ">=3.10"
+dependencies = [
+    "PyQt6>=6.9.1",
+    "mss>=10.0.0",
+    "Pillow>=11.2.1",
+    "platformdirs>=4.0.0",
+    "keyboard~=0.13.5",
+    "winsdk>=1.0.0b10",
+]
+
+[project.scripts]
+hudict = "hudict.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["hudict*"]
