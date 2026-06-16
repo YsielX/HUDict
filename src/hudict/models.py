@@ -29,11 +29,26 @@ class Box:
         dy = max(self.top - y, 0, y - self.bottom)
         return dx * dx + dy * dy
 
+    def to_dict(self):
+        return {
+            "left": self.left,
+            "top": self.top,
+            "width": self.width,
+            "height": self.height,
+            "right": self.right,
+            "bottom": self.bottom,
+            "center_x": self.center_x,
+            "center_y": self.center_y,
+        }
+
 
 @dataclass(frozen=True)
 class Word:
     text: str
     box: Box
+
+    def to_dict(self):
+        return {"text": self.text, "box": self.box.to_dict()}
 
 
 @dataclass(frozen=True)
@@ -41,3 +56,10 @@ class Line:
     text: str
     words: list[Word]
     box: Box
+
+    def to_dict(self):
+        return {
+            "text": self.text,
+            "box": self.box.to_dict(),
+            "words": [word.to_dict() for word in self.words],
+        }
