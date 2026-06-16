@@ -17,15 +17,6 @@ HUDict is designed for English immersion: watching a film, reading subtitles, pl
 - Floating PyQt popup shown while the hotkey is held.
 - Optional debug dump with screenshots, OCR words, hit word, lookup result, and timing.
 
-## Inspiration
-
-HUDict is inspired by tools that make lookup feel immediate instead of interruptive:
-
-- [dominostars/playtranslate](https://github.com/dominostars/playtranslate), especially its tap-to-lookup feeling on Android.
-- [rtr46/meikipop](https://github.com/rtr46/meikipop), especially the idea of an OCR-powered desktop popup dictionary.
-
-HUDict focuses on English-learning workflows on Windows, using local OCR and ECDICT.
-
 ## Requirements
 
 - Windows 10 or later.
@@ -93,39 +84,12 @@ Notes:
 - `debug_dir` may be left empty; HUDict will use `debug/` in the project directory.
 - Set `debug_capture = false` after troubleshooting to avoid writing screenshots and JSON files.
 
-## Debug Files
 
-When `debug_capture = true`, each hotkey press writes:
+## Inspiration
 
-- `debug/<timestamp>.png`: the actual OCR image.
-- `debug/<timestamp>.json`: OCR lines, words, boxes, selected word, dictionary entries, and timing.
+HUDict is inspired by tools that make lookup feel immediate instead of interruptive:
 
-The JSON timing section helps diagnose latency:
+- [dominostars/playtranslate](https://github.com/dominostars/playtranslate), especially its tap-to-lookup feeling on Android.
+- [rtr46/meikipop](https://github.com/rtr46/meikipop), especially the idea of an OCR-powered desktop popup dictionary.
 
-- `capture`
-- `ocr`
-- `hit_test`
-- `lookup`
-- `total_to_lookup`
-
-With Windows OCR, OCR is usually only a few milliseconds on ordinary text.
-
-## Limitations
-
-- HUDict focuses on word lookup for learning in context.
-- OCR quality depends on font, scale, contrast, and overlays.
-- Some fullscreen exclusive games may block screen capture or popup rendering.
-- Online games with anti-cheat may dislike overlays and global hotkeys.
-
-## Development
-
-Useful checks:
-
-```powershell
-.\.venv\Scripts\hudict.exe --version
-.\.venv\Scripts\python.exe -m hudict.tools.build_ecdict ..\ECDICT\ecdict.csv -o dictionary.pkl
-```
-
-## License Notes
-
-HUDict code is separate from ECDICT. Check ECDICT's license before redistributing dictionary data.
+HUDict focuses on English-learning workflows on Windows, using local OCR and ECDICT.
