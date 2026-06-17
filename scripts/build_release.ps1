@@ -69,9 +69,6 @@ Copy-Item -Path "config.ini" -Destination $StageDir
 Copy-Item -Path "run-hudict.bat" -Destination $StageDir
 Copy-Item -Path "README.md" -Destination $StageDir
 Copy-Item -Path "README.zh-CN.md" -Destination $StageDir
-if (Test-Path "demo.mp4") {
-    Copy-Item -Path "demo.mp4" -Destination $StageDir
-}
 if (-not $NoDictionary) {
     Copy-Item -Path "dictionary.pkl" -Destination $StageDir
 }
