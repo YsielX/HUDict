@@ -10,9 +10,9 @@ HUDict is designed for English immersion: watching a film, reading subtitles, pl
 
 ## Demo
 
-![HUDict demo](demo.webp)
+<video src="https://github.com/user-attachments/assets/b1941356-a579-4c20-ba41-bfbbe310fb41" controls width="100%"></video>
 
-[Watch the demo video](demo.mp4)
+[Watch the demo video](https://github.com/user-attachments/assets/b1941356-a579-4c20-ba41-bfbbe310fb41)
 
 ## Features
 
