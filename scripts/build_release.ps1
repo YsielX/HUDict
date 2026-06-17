@@ -72,6 +72,9 @@ Copy-Item -Path "README.zh-CN.md" -Destination $StageDir
 if (Test-Path "demo.mp4") {
     Copy-Item -Path "demo.mp4" -Destination $StageDir
 }
+if (Test-Path "demo.webp") {
+    Copy-Item -Path "demo.webp" -Destination $StageDir
+}
 
 if (-not $NoDictionary) {
     Copy-Item -Path "dictionary.pkl" -Destination $StageDir
