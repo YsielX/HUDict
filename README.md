@@ -8,6 +8,12 @@ Hold a hotkey over a word, and HUDict captures a small area around the cursor, r
 
 HUDict is designed for English immersion: watching a film, reading subtitles, playing a game, or browsing a page while keeping the original sentence in view. It helps you understand one word at a time, so the surrounding context still does the teaching.
 
+## Demo
+
+<video src="demo.mp4" controls width="100%"></video>
+
+[Watch the demo video](demo.mp4)
+
 ## Features
 
 - Local Windows OCR for fast, private recognition.
